@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ha-am-dev.github.io/kkutu-dict-docs/sitemap.xml
