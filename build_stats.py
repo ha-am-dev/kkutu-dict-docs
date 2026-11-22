@@ -121,7 +121,7 @@ HTML = f"""<!doctype html>
     <div><b>{kf(TOTAL_KO)}</b><span>한글 단어</span></div>
     <div><b>{kf(TOTAL_ALL)}</b><span>전체 등록 단어</span></div>
     <div><b>{kf(GE10)}</b><span>10글자 이상</span></div>
-    <div><b>{kf(DEADEND)}</b><span>이어갈 단어가 없는 단어</span></div>
+    <div><b>{kf(DEADEND)}</b><span>이어갈 단어 없음</span></div>
   </div>
 
   <h2>글자 길이 분포</h2>
