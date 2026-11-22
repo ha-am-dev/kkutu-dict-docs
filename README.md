@@ -5,6 +5,7 @@
 
 - 사이트: <https://ha-am-dev.github.io/kkutu-dict-docs/>
 - 치트시트: <https://ha-am-dev.github.io/kkutu-dict-docs/guide.html>
+- 단어 통계: <https://ha-am-dev.github.io/kkutu-dict-docs/stats.html>
 
 ## 다루는 내용
 
@@ -12,6 +13,7 @@
 - 두음법칙·글자 정보 표시 같은 표시 옵션
 - 결과가 0건일 때 조건을 빼는 순서
 - 방어 단어를 고르는 기준
+- 글자 길이 분포·시작 글자 순위·이어갈 단어가 없는 단어 수(사전 데이터 집계)
 
 ## 수정 방법
 

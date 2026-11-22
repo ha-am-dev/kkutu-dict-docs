@@ -63,9 +63,7 @@ def chip_list(items, param="start"):
 first_chips = chip_list(FIRST_TOP, "start")
 end_chips = chip_list(END_TOP, "end")
 low_chips = "".join(f'<span class="chip muted">{w} <b>{kf(n)}</b></span>' for w, n in START_LOW)
-theme_chips = "".join(
-    f'<a class="chip" href="https://kkutu.lightstudio.kr/?theme={urllib.parse.quote(t)}">{html.escape(t)} <b>{kf(n)}</b></a>'
-    for t, n in THEMES)
+theme_chips = "".join(f'<span class="chip">{html.escape(t)} <b>{kf(n)}</b></span>' for t, n in THEMES)
 long_rows = "\n".join(
     f'      <li><span class="len">{L}</span><a href="{texturl(w)}">{html.escape(w)}</a></li>'
     for w, L in LONGEST)
