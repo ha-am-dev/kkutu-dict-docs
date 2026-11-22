@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>끄투 단어 통계 — 글자 길이 분포·시작 글자 순위</title>
+<meta name="description" content="끄투코리아 단어사전에 등록된 한글 단어 721,894개의 실제 통계입니다. 글자 길이 분포, 시작 글자·끝 글자 순위, 이어갈 단어가 없는 단어 수, 가장 긴 단어 목록을 한 페이지에 정리했습니다.">
+<link rel="canonical" href="https://ha-am-dev.github.io/kkutu-dict-docs/stats.html">
+<style>
+  :root{--ink:#171a1f;--muted:#5c6470;--line:#e6e8ec;--accent:#c9821a;--bg:#fffdf8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  main{max-width:780px;margin:0 auto;padding:56px 22px 96px}
+  h1{font-size:1.8rem;line-height:1.3;margin:0 0 10px;letter-spacing:-0.02em}
+  p.lead{color:var(--muted);margin:0 0 26px}
+  h2{font-size:1.15rem;margin:40px 0 6px}
+  h2 + p.sub{color:var(--muted);font-size:.93rem;margin:0 0 14px}
+  p{margin:0 0 14px}
+  a{color:var(--accent)}
+  code{background:#f1efe9;padding:2px 5px;border-radius:4px;font-size:.92em}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0 8px}
+  .kpi div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:1.45rem;line-height:1.2;letter-spacing:-0.01em}
+  .kpi span{color:var(--muted);font-size:.86rem}
+  table{width:100%;border-collapse:collapse;font-size:.94rem;margin:6px 0 4px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+  th{color:var(--muted);font-weight:600;font-size:.86rem}
+  td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+  td.pct{color:var(--muted)}
+  .bar{display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,#e8b871,#c9821a);min-width:2px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.94rem;text-decoration:none;color:var(--ink)}
+  .chip b{color:var(--accent);font-weight:600;font-size:.86rem}
+  .chip.muted{color:var(--muted)}
+  .chip:hover{border-color:#d9c6a8}
+  ol.long{padding-left:22px}
+  ol.long li{margin:10px 0;word-break:break-all}
+  ol.long a{text-decoration:none}
+  .len{display:inline-block;min-width:34px;margin-right:8px;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+  .note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:26px 0;font-size:.93rem;color:#3d444e}
+  footer{margin-top:52px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  @media(max-width:520px){ td.pct, th.pct{display:none} }
+</style>
+</head>
+<body>
+<main>
+  <h1>끄투 단어 통계</h1>
+  <p class="lead">끝말잇기를 하다 보면 "이 글자로 시작하는 단어가 몇 개나 되나"가 곧 전략이 됩니다. <a href="https://kkutu.lightstudio.kr/">끄투코리아 단어사전</a>에 실제로 등록된 단어를 세어 정리했습니다.</p>
+
+  <div class="kpi">
+    <div><b>721,894</b><span>한글 단어</span></div>
+    <div><b>814,025</b><span>전체 등록 단어</span></div>
+    <div><b>69,708</b><span>10글자 이상</span></div>
+    <div><b>2,335</b><span>이어갈 단어가 없는 단어</span></div>
+  </div>
+
+  <h2>글자 길이 분포</h2>
+  <p class="sub">한글 단어 721,894개를 길이별로 센 결과입니다. 3~4글자가 전체의 38%를 차지합니다.</p>
+  <table>
+    <thead><tr><th>길이</th><th>단어 수</th><th>비중</th><th class="pct">점유율</th></tr></thead>
+    <tbody>
+      <tr><td>1글자</td><td class="num">1,418</td><td><span class="bar" style="width:1.0%"></span></td><td class="num pct">0.2%</td></tr>
+      <tr><td>2글자</td><td class="num">81,096</td><td><span class="bar" style="width:58.3%"></span></td><td class="num pct">11.2%</td></tr>
+      <tr><td>3글자</td><td class="num">138,485</td><td><span class="bar" style="width:99.5%"></span></td><td class="num pct">19.2%</td></tr>
+      <tr><td>4글자</td><td class="num">139,119</td><td><span class="bar" style="width:100.0%"></span></td><td class="num pct">19.3%</td></tr>
+      <tr><td>5글자</td><td class="num">91,661</td><td><span class="bar" style="width:65.9%"></span></td><td class="num pct">12.7%</td></tr>
+      <tr><td>6글자</td><td class="num">73,275</td><td><span class="bar" style="width:52.7%"></span></td><td class="num pct">10.2%</td></tr>
+      <tr><td>7글자</td><td class="num">55,131</td><td><span class="bar" style="width:39.6%"></span></td><td class="num pct">7.6%</td></tr>
+      <tr><td>8글자</td><td class="num">42,670</td><td><span class="bar" style="width:30.7%"></span></td><td class="num pct">5.9%</td></tr>
+      <tr><td>9글자</td><td class="num">29,331</td><td><span class="bar" style="width:21.1%"></span></td><td class="num pct">4.1%</td></tr>
+      <tr><td>10글자</td><td class="num">20,728</td><td><span class="bar" style="width:14.9%"></span></td><td class="num pct">2.9%</td></tr>
+      <tr><td>11글자</td><td class="num">14,711</td><td><span class="bar" style="width:10.6%"></span></td><td class="num pct">2.0%</td></tr>
+      <tr><td>12글자</td><td class="num">10,361</td><td><span class="bar" style="width:7.4%"></span></td><td class="num pct">1.4%</td></tr>
+      <tr><td>13글자</td><td class="num">7,219</td><td><span class="bar" style="width:5.2%"></span></td><td class="num pct">1.0%</td></tr>
+      <tr><td>14글자</td><td class="num">5,083</td><td><span class="bar" style="width:3.7%"></span></td><td class="num pct">0.7%</td></tr>
+      <tr><td>15글자 이상(45종 길이)</td><td class="num">11,606</td><td><span class="bar" style="width:8.3%"></span></td><td class="num pct">1.6%</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">20글자 이상도 2,250개 있습니다. <a href="https://kkutu.lightstudio.kr/?min=20">최소 길이를 20으로 두고 검색</a>하면 바로 볼 수 있습니다.</p>
+
+  <h2>시작 글자 순위</h2>
+  <p class="sub">그 글자로 시작하는 단어가 많은 순서입니다. 내 차례에 이어가기 쉬운 글자이기도 합니다.</p>
+  <div class="chips"><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%95%84">아 <b>10,265</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%9D%B4">이 <b>9,751</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%82%AC">사 <b>8,978</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EA%B3%A0">고 <b>7,478</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%98%A4">오 <b>7,403</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EB%A7%88">마 <b>6,761</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EA%B0%80">가 <b>6,514</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EB%8C%80">대 <b>6,492</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%88%98">수 <b>5,932</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%A0%84">전 <b>5,871</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%8A%A4">스 <b>5,819</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%9E%90">자 <b>5,656</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EA%B8%B0">기 <b>5,322</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%9C%A0">유 <b>5,314</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?start=%EC%A7%80">지 <b>5,288</b></a></div>
+
+  <h2>끝 글자 순위</h2>
+  <p class="sub">그 글자로 끝나는 단어가 많은 순서입니다. 반대로 상대를 막으려면 이 목록에 없는 글자로 끝내는 편이 낫습니다.</p>
+  <div class="chips"><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EA%B8%B0">기 <b>17,982</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%9D%B4">이 <b>16,583</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EB%A6%AC">리 <b>16,567</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%9B%90">원 <b>15,441</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%8A%A4">스 <b>14,851</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EA%B5%90">교 <b>13,106</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%9E%90">자 <b>11,098</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%A7%80">지 <b>10,515</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%ED%8A%B8">트 <b>10,012</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?end=%EC%82%AC">사 <b>9,725</b></a></div>
+
+  <h2>이어가기 어려운 글자</h2>
+  <p class="sub">사전 전체에서 그 글자로 시작하는 단어가 한 개뿐인 글자입니다. 이런 글자로 끝내면 다음 사람은 사실상 선택지가 하나입니다.</p>
+  <div class="chips"><span class="chip muted">촏 <b>1</b></span><span class="chip muted">탓 <b>1</b></span><span class="chip muted">뙁 <b>1</b></span><span class="chip muted">봋 <b>1</b></span><span class="chip muted">쑝 <b>1</b></span><span class="chip muted">픗 <b>1</b></span><span class="chip muted">왇 <b>1</b></span><span class="chip muted">돓 <b>1</b></span><span class="chip muted">옦 <b>1</b></span><span class="chip muted">슻 <b>1</b></span><span class="chip muted">돤 <b>1</b></span><span class="chip muted">뒙 <b>1</b></span></div>
+
+  <h2>이어갈 단어가 없는 단어 2,335개</h2>
+  <p>끝 글자로 시작하는 단어가 사전에 하나도 없는 단어입니다(예: <a href="https://kkutu.lightstudio.kr/text/%ED%98%B8%EB%A5%B8">호른</a>은 '른'으로 시작하는 단어가 없습니다). 이런 단어를 내면 상대는 그 글자로 이어갈 수 없습니다. 단, 게임 설정에 따라 두음법칙이 적용되면 '려·뇨·류·리' 같은 끝 글자가 '여·요·유·이'로 이어질 수 있으니 실제 판에서는 규칙을 확인하세요.</p>
+
+  <h2>가장 긴 단어</h2>
+  <p class="sub">사전에 등록된 순수 한글 단어 중 긴 순서입니다. 길이 제한이 없는 판에서만 쓸 수 있습니다.</p>
+  <ol class="long">
+      <li><span class="len">76</span><a href="https://kkutu.lightstudio.kr/text/%EC%B6%94%EB%B0%A9%EB%8B%B9%ED%95%9C%EC%B9%98%ED%8A%B8%EB%B6%80%EC%97%AC%EB%A7%88%EC%88%A0%EC%82%AC%EB%8A%94%EC%9E%90%EC%9C%A0%EB%A1%9C%EC%9A%B4%EC%84%B8%EC%BB%A8%EB%93%9C%EB%9D%BC%EC%9D%B4%ED%94%84%EB%A5%BC%EA%B5%AC%EA%B0%80%ED%95%9C%EB%8B%A4%EB%82%98%EB%8A%94%EB%AC%B4%EA%B8%B0%EB%A7%8C%EC%9D%B4%EC%95%84%EB%8B%88%EB%9D%BC%EB%AA%A8%EB%93%A0%EA%B2%83%EC%97%90%EA%B0%95%ED%99%94%ED%8F%AC%EC%9D%B8%ED%8A%B8%EB%A5%BC%EB%B6%80%EC%97%AC%ED%95%A0%EC%88%98%EC%9E%88%EA%B3%A0%EB%82%B4%EB%A7%88%EC%9D%8C%EB%8C%80%EB%A1%9C%ED%9A%A8%EA%B3%BC%EB%A5%BC%ED%95%B4%EC%A0%9C%ED%95%A0%EC%88%98%EC%9E%88%EB%8A%94%EB%8D%B0%EB%82%A8%EC%9D%80%EC%82%AC%EB%9E%8C%EB%93%A4%EA%B4%9C%EC%B0%AE%EA%B2%A0%EC%96%B4">추방당한치트부여마술사는자유로운세컨드라이프를구가한다나는무기만이아니라모든것에강화포인트를부여할수있고내마음대로효과를해제할수있는데남은사람들괜찮겠어</a></li>
+      <li><span class="len">61</span><a href="https://kkutu.lightstudio.kr/text/%EC%95%BD%ED%98%BC%ED%8C%8C%EA%B8%B0%EB%A5%BC%EB%85%B8%EB%A6%AC%EA%B3%A0%EA%B8%B0%EC%96%B5%EC%83%81%EC%8B%A4%EC%9D%B8%EC%B2%99%ED%96%88%EB%8D%94%EB%8B%88%EB%83%89%EB%8B%B4%ED%95%98%EB%8D%98%EC%95%BD%ED%98%BC%EC%9E%90%EA%B0%80%EA%B8%B0%EC%96%B5%EC%9D%84%EC%9E%83%EA%B8%B0%EC%A0%84%EC%9D%98%EB%84%8C%EB%82%98%EC%97%90%EA%B2%8C%EC%99%84%EC%A0%84%ED%9E%88%ED%91%B9%EB%B9%A0%EC%A0%B8%EC%9E%88%EC%97%88%EB%8B%A4%EB%8A%94%EB%A7%90%EB%8F%84%EC%95%88%EB%90%98%EB%8A%94%EA%B1%B0%EC%A7%93%EB%A7%90%EC%9D%84%ED%95%98%EA%B8%B0%EC%8B%9C%EC%9E%91%ED%96%88%EB%8B%A4">약혼파기를노리고기억상실인척했더니냉담하던약혼자가기억을잃기전의넌나에게완전히푹빠져있었다는말도안되는거짓말을하기시작했다</a></li>
+      <li><span class="len">58</span><a href="https://kkutu.lightstudio.kr/text/%EB%95%85%EA%B1%B0%EB%AF%B8%EC%A7%88%EB%95%8C%EC%83%8C%EB%94%94%EC%97%90%EC%9D%B4%EA%B3%A0%EC%97%90%EC%84%9C%EB%A1%9C%EC%8A%A4%EC%95%A4%EC%A0%A4%EB%A0%88%EC%8A%A4%EB%A1%9C%EC%9A%B4%EC%A0%84%ED%95%98%EB%A9%B0%EC%86%8C%ED%98%95%EB%94%94%EC%A7%80%ED%84%B8%EB%85%B9%EC%9D%8C%EA%B8%B0%EC%97%90%EA%B5%AC%EC%88%A0%ED%95%9C%EB%A7%89%EC%97%B0%ED%9E%88%EC%97%98%EC%97%90%EC%9D%B4%EC%9A%B4%EC%A0%84%EC%8B%9C%EB%93%A4%EC%9D%B4%EB%9D%BC%EA%B3%A0%EC%83%9D%EA%B0%81%ED%95%98%EB%8A%94%EC%9E%91%ED%92%88%EB%93%A4%EC%9D%98%EB%AA%A8%EC%9D%8C">땅거미질때샌디에이고에서로스앤젤레스로운전하며소형디지털녹음기에구술한막연히엘에이운전시들이라고생각하는작품들의모음</a></li>
+      <li><span class="len">58</span><a href="https://kkutu.lightstudio.kr/text/%ED%8B%B0%ED%83%80%EC%9E%84%EC%9D%84%EC%9C%84%ED%95%98%EC%97%AC%EC%B0%A9%ED%95%9C%EC%82%AC%EB%9E%8C%EB%AC%B8%EC%84%B1%ED%98%84%EC%97%B4%EB%A6%B0%EC%82%AC%ED%9A%8C%EC%99%80%EA%B7%B8%EC%A0%81%EB%93%A4%EB%88%88%EC%82%AC%EB%9E%8C%EC%86%8D%EC%9D%98%EA%B2%80%EC%9D%80%ED%95%AD%EC%95%84%EB%A6%AC%EC%94%A8%EC%95%97%EB%B6%88%EB%AA%A9%EB%A7%88%EB%A5%B8%EA%B3%84%EC%A0%88%EC%88%A0%EB%A8%B9%EA%B3%A0%EB%8B%B4%EB%B0%B0%ED%94%BC%EB%8A%94%EC%97%84%EB%A7%88%EB%AA%A9%EB%A0%A8%EA%BD%83%EA%B7%B8%EB%8A%98%EC%95%84%EB%9E%98%EC%84%9C">티타임을위하여착한사람문성현열린사회와그적들눈사람속의검은항아리씨앗불목마른계절술먹고담배피는엄마목련꽃그늘아래서</a></li>
+      <li><span class="len">57</span><a href="https://kkutu.lightstudio.kr/text/%EC%9D%B8%EB%8F%84%EB%84%A4%EC%8B%9C%EC%95%84%ED%8E%98%EC%B9%BC%EB%A1%B1%EA%B0%84%EC%9D%98%EB%B0%94%ED%8B%B1%EB%B0%95%EB%AC%BC%EA%B4%80%EA%B3%BC%EA%B3%B5%EB%8F%99%EC%88%98%ED%96%89%ED%95%98%EB%8A%94%EC%B4%88%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%EC%A7%81%EC%97%85%ED%95%99%EA%B5%90%EA%B8%B0%EC%88%A0%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90%ED%95%99%EC%83%9D%EB%93%A4%EC%97%90%EB%8C%80%ED%95%9C%EB%B0%94%ED%8B%B1%EB%AC%B4%ED%98%95%EB%AC%B8%ED%99%94%EC%9C%A0%EC%82%B0%EA%B5%90%EC%9C%A1%EB%B0%8F%ED%9B%88%EB%A0%A8">인도네시아페칼롱간의바틱박물관과공동수행하는초중고등학교직업학교기술전문학교학생들에대한바틱무형문화유산교육및훈련</a></li>
+      <li><span class="len">56</span><a href="https://kkutu.lightstudio.kr/text/%EC%B5%9C%EA%B3%A0%EB%82%9C%EC%9D%B4%EB%8F%84%EB%AF%B8%EA%B6%81%EC%97%90%EC%84%9C%ED%8C%8C%ED%8B%B0%EC%97%90%EA%B2%8C%EB%B2%84%EB%A0%A4%EC%A7%84%EC%97%90%EC%8A%A4%EB%9E%AD%ED%81%AC%EA%B2%80%EC%82%AC%EC%A0%95%EB%A7%90%EB%A1%9C%ED%97%A4%EB%A7%A4%EB%8B%A4%EA%B0%80%EC%95%84%EB%AC%B4%EB%8F%84%EB%AA%A8%EB%A5%B4%EB%8A%94%EC%B5%9C%EC%8B%AC%EB%B6%80%EB%A1%9C%EB%82%B4%EA%B0%90%EC%9D%B4%EB%A7%9E%EB%8B%A4%EB%A9%B4%EC%95%84%EB%A7%88%EB%8F%84%EC%9D%B4%EC%AA%BD%EC%9D%B4%EC%B6%9C%EA%B5%AC%EC%9D%BC%EA%B1%B0%EC%95%BC">최고난이도미궁에서파티에게버려진에스랭크검사정말로헤매다가아무도모르는최심부로내감이맞다면아마도이쪽이출구일거야</a></li>
+      <li><span class="len">55</span><a href="https://kkutu.lightstudio.kr/text/%EC%9D%B4%EC%A0%9C%EC%9D%BC%ED%95%98%EA%B3%A0%EC%8B%B6%EC%A7%80%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4%EB%AA%A8%ED%97%98%EA%B0%80%EB%94%B0%EC%9C%84%EA%B7%B8%EB%A7%8C%EB%91%90%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4%EC%9D%B4%EC%A0%9C%EC%99%80%EC%84%9C%EC%9E%98%ED%95%B4%EC%A4%84%ED%85%8C%EB%8B%88%EB%8F%8C%EC%95%84%EC%98%A4%EB%9D%BC%EA%B3%A0%ED%95%B4%EB%8F%84%EA%B1%B0%EC%A0%88%ED%95%A9%EB%8B%88%EB%8B%A4%EC%A0%80%EB%8A%94%EC%A0%88%EB%8C%80%EC%9D%BC%ED%95%98%EC%A7%80%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4">이제일하고싶지않습니다모험가따위그만두겠습니다이제와서잘해줄테니돌아오라고해도거절합니다저는절대일하지않습니다</a></li>
+      <li><span class="len">53</span><a href="https://kkutu.lightstudio.kr/text/%EC%9A%B0%EB%A6%AC%EB%8B%A4%ED%88%AC%EA%B2%8C%EB%8F%BC%EB%8F%84%EC%9D%B4%EA%B2%83%EB%A7%8C%EA%B8%B0%EC%96%B5%ED%95%B4%EC%A4%84%EB%9E%98%EB%88%88%EC%9D%84%EB%A7%9E%EC%B6%94%EA%B3%A0%EC%84%9C%EB%A1%9C%EA%B0%80%EC%84%9C%EB%A1%9C%EC%9D%98%EC%86%90%EC%9E%A1%EC%95%84%EC%A3%BC%EB%A9%B0%EB%82%AE%EC%9D%80%EB%AA%A9%EC%86%8C%EB%A6%AC%EC%99%80%EC%98%88%EC%81%9C%EB%A7%90%ED%88%AC%EB%A1%9C%EC%83%81%EC%B2%98%EC%A3%BC%EC%A7%80%EC%95%8A%EA%B2%8C%EB%85%B8%EB%A0%A5%EC%9D%84%ED%95%98%EA%B3%A0">우리다투게돼도이것만기억해줄래눈을맞추고서로가서로의손잡아주며낮은목소리와예쁜말투로상처주지않게노력을하고</a></li>
+      <li><span class="len">53</span><a href="https://kkutu.lightstudio.kr/text/%EC%82%B0%ED%8B%B0%EC%95%84%EA%B3%A0%EB%8D%B0%EC%BD%A4%ED%8F%AC%EC%8A%A4%ED%85%94%EB%9D%BC%EC%84%B1%EB%8B%B9%EC%9D%98%EC%B9%BC%EB%A6%AD%EC%8A%A4%ED%8B%B0%EB%88%84%EC%8A%A4%EA%B3%A0%EC%82%AC%EB%B3%B8%EB%B0%8F%EB%A6%AC%EB%B2%A0%EB%A5%B4%EC%83%81%ED%8B%B0%EC%95%BC%EC%BD%A5%EC%9D%98%EC%A4%91%EC%84%B8%EC%82%AC%EB%B3%B8%EB%93%A4%EC%9D%B4%EB%B2%A0%EB%A6%AC%EC%95%84%EC%97%90%EC%84%9C%EA%B8%B0%EC%9B%90%ED%95%9C%EC%9C%A0%EB%9F%BD%EC%9D%98%EC%95%BC%EA%B3%A0%EB%B3%B4%EC%A0%84%ED%86%B5">산티아고데콤포스텔라성당의칼릭스티누스고사본및리베르상티야콥의중세사본들이베리아에서기원한유럽의야고보전통</a></li>
+      <li><span class="len">52</span><a href="https://kkutu.lightstudio.kr/text/%EA%B4%91%EB%AC%B8%EC%9E%90%EC%A0%84%EA%B9%80%EC%8B%A0%EC%84%A0%EC%A0%84%EC%9A%B0%EC%83%81%EC%A0%84%EC%97%B4%EB%85%80%ED%95%A8%EC%96%91%EB%B0%95%EC%94%A8%EC%A0%84%EB%A7%88%EC%9E%A5%EC%A0%84%EC%98%88%EB%8D%95%EC%84%A0%EC%83%9D%EC%A0%84%EB%AF%BC%EC%98%B9%EC%A0%84%EC%9D%80%EC%95%A0%EC%A0%84%EC%9C%A0%EC%9A%B0%EC%B6%98%EC%A0%84%EC%B6%9C%EB%8F%99%EB%AC%B8%EC%98%A4%EB%8C%80%EA%B2%80%ED%98%91%EC%A0%84%EB%B6%80%EB%AA%A9%ED%95%9C%EC%A0%84%EC%83%81%EC%82%AC%EB%8F%99%EA%B8%B0">광문자전김신선전우상전열녀함양박씨전마장전예덕선생전민옹전은애전유우춘전출동문오대검협전부목한전상사동기</a></li>
+  </ol>
+
+  <h2>주제 분포</h2>
+  <p class="sub">주제는 123종이 등록되어 있습니다. 단어 수가 많은 주제부터 보면 어느 주제에서 단어를 찾기 쉬운지 감이 옵니다.</p>
+  <div class="chips"><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%A3%BC%EC%A0%9C%EC%97%86%EC%9D%8C">주제없음 <b>314,029</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%9D%98%ED%95%99">의학 <b>26,327</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%A3%BC%EC%A0%9C%20%EC%97%86%EC%9D%8C">주제 없음 <b>23,558</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%86%8C%EC%84%A4/%EC%8B%9C/%ED%9D%AC%EA%B3%A1">소설/시/희곡 <b>20,202</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EB%8F%99%EB%AC%BC%EC%9D%98%20%EC%88%B2">동물의 숲 <b>19,688</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%97%AD%EC%82%AC">역사 <b>19,280</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EA%B5%AD%EB%82%B4%20%EA%B4%80%EA%B4%91%EC%A7%80/%EC%B6%95%EC%A0%9C">국내 관광지/축제 <b>18,401</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%BF%A0%ED%82%A4%EB%9F%B0">쿠키런 <b>17,983</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%9C%A0%ED%9D%AC%EC%99%95">유희왕 <b>17,746</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EB%8F%99%EB%AC%BC">동물 <b>17,271</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%8B%9D%EB%AC%BC">식물 <b>16,195</b></a><a class="chip" href="https://kkutu.lightstudio.kr/?theme=%EC%A7%81%EC%97%85">직업 <b>16,096</b></a></div>
+
+  <div class="note">
+    <strong>집계 기준</strong> — 2026년 11월 22일 기준 사전 등록 데이터 전체를 직접 세었습니다.
+    '한글 단어'는 한글 음절로만 이루어진 단어이며, 라틴 문자·숫자가 섞인 항목은 제외했습니다.
+    이어가기 판정은 사전 원문의 첫 글자·끝 글자를 그대로 비교한 값이라 두음법칙 변형은 반영하지 않았습니다.
+  </div>
+
+  <h2>같이 보기</h2>
+  <ul>
+    <li><a href="https://ha-am-dev.github.io/kkutu-dict-docs/">끄투 사전 조건 검색 사용법</a></li>
+    <li><a href="https://ha-am-dev.github.io/kkutu-dict-docs/guide.html">상황별 조건 조합 치트시트</a></li>
+    <li><a href="https://kkutu.lightstudio.kr/">끄투코리아 단어사전 열기</a></li>
+  </ul>
+
+  <footer>끄투 사전 사용법을 정리한 비공식 안내 문서입니다. · <a href="https://ha-am-dev.github.io/kkutu-dict-docs/">사용법으로</a></footer>
+</main>
+</body>
+</html>
